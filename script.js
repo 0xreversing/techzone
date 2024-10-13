@@ -9,16 +9,16 @@ function agregarAlCarrito(nombre, precio, imagen) {
     if (cantidad > 0) {
         const productoExistente = carrito.find(item => item.nombre === nombre);
         if (productoExistente) {
-            productoExistente.cantidad += cantidad; // Aumentar cantidad si ya existe
+            productoExistente.cantidad += cantidad;
             registrarVenta(nombre, precio, cantidad);
         } else {
-            carrito.push({ nombre, precio, cantidad, imagen }); // Agregar imagen aquí
+            carrito.push({ nombre, precio, cantidad, imagen });
         }
 
 
-        cantidadInput.value = ""; // Limpiar input
-        actualizarCarrito(); // Actualiza la vista del carrito
-        guardarCarrito(); // Guardar en localStorage
+        cantidadInput.value = "";
+        actualizarCarrito();
+        guardarCarrito();
 
 
         alert(`${nombre} agregado al carrito.`);
@@ -32,13 +32,13 @@ function agregarAlCarrito(nombre, precio, imagen) {
 
 function mostrarCarrito() {
     const carritoDiv = document.getElementById('carrito');
-    carritoDiv.classList.toggle('active'); // Cambia el estado del carrito
+    carritoDiv.classList.toggle('active');
 }
 
 
 function actualizarCarrito() {
     const listaCarrito = document.getElementById('lista-carrito');
-    listaCarrito.innerHTML = ""; // Limpiar la lista existente
+    listaCarrito.innerHTML = "";
     let total = 0;
 
 
@@ -61,42 +61,42 @@ function actualizarCarrito() {
 
 
 function pagar() {
-    // Crear un registro de la venta
+    
     const venta = {
         fecha: new Date().toLocaleString(),
-        productos: [...carrito] // Copia del carrito
+        productos: [...carrito]
     };
     
-    // Guardar en el almacenamiento local
+
     let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
     ventas.push(venta);
     localStorage.setItem('ventas', JSON.stringify(ventas));
 
     alert("Proceso de pago iniciado.");
-    carrito = []; // Vaciar el carrito después de pagar
+    carrito = [];
     actualizarCarrito();
-    mostrarCarrito(); // Cerrar carrito
-    guardarCarrito(); // Guardar el carrito vacío en localStorage
+    mostrarCarrito();
+    guardarCarrito();
 }
 
 
 
 function guardarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito)); // Guardar en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 
-// Cargar el carrito al iniciar la página
+
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito();
 });
 
 
-// Mostrar el carrito al hacer clic en el ícono del carrito en el header
+
 document.getElementById('icono-carrito').onclick = mostrarCarrito;
 
 
-// Función para cargar productos según la categoría
+
 const productos = {
     celular: [
         { nombre: 'Celular IPHONE 16', precio: 300, imagen: "https://i.blogs.es/10e746/iphone-16/1366_2000.jpeg", descripcion: "TOMA LAS MEJORES FOTOS, SOLO NECESITAS PRESIONAR Y LISTO GAAAAA" },
@@ -148,14 +148,14 @@ function mostrarModal(nombre, precio, imagen, descripcion) {
     document.getElementById('modal-descripcion').innerText = descripcion;
 
 
-    document.getElementById('modal').style.display = 'block'; // Mostrar el modal
+    document.getElementById('modal').style.display = 'block';
 }
 
 
 
 
 function cerrarModal() {
-    document.getElementById('modal').style.display = 'none'; // Ocultar el modal
+    document.getElementById('modal').style.display = 'none';
 }
 
 
@@ -193,7 +193,7 @@ function cargarProducto() {
 }
 
 
-// Cargar el producto al iniciar la página
+
 if (window.location.pathname.includes('producto.html')) {
     cargarProducto();
 }
@@ -218,7 +218,7 @@ function cargarProductos() {
             productosDiv.appendChild(productoDiv);
         });
     } else {
-        // Mostrar todos los productos si no hay categoría
+
         for (const [categoria, listaProductos] of Object.entries(productos)) {
             listaProductos.forEach(producto => {
                 const productoDiv = document.createElement('div');
@@ -238,7 +238,6 @@ function cargarProductos() {
 
 
 
-// Cargar productos al iniciar la página de productos
 if (window.location.pathname.includes('productos.html')) {
     cargarProductos();
 }
@@ -249,11 +248,11 @@ function scrollCategorias(offset) {
     categorias.scrollBy({
         top: 0,
         left: offset,
-        behavior: 'smooth' // Desplazamiento suave
+        behavior: 'smooth'
     });
 }
 //ACUMULADORES PARA LAS VENTAS
-let ventas = []; // Array para almacenar las ventas
+let ventas = [];
 function registrarVenta(nombre, precio, cantidad) {
     const totalVenta = precio * cantidad;
     const venta = {
@@ -261,21 +260,21 @@ function registrarVenta(nombre, precio, cantidad) {
         cantidad,
         precio,
         total: totalVenta,
-        fecha: new Date().toISOString(), // Guardar la fecha de la venta
+        fecha: new Date().toISOString(), 
     };
-    ventas.push(venta); // Agregar la venta al registro
-    guardarVentas(); // Guardar en localStorage
+    ventas.push(venta);
+    guardarVentas();
 }
 
 
 function guardarVentas() {
-    localStorage.setItem('ventas', JSON.stringify(ventas)); // Guardar ventas en localStorage
+    localStorage.setItem('ventas', JSON.stringify(ventas)); 
 }
 //ME MUESTRA LAS VENTAS
 function cargarVentas() {
     const ventasGuardadas = JSON.parse(localStorage.getItem('ventas')) || [];
     const listaVentas = document.getElementById('lista-ventas');
-    listaVentas.innerHTML = ""; // Limpiar lista existente
+    listaVentas.innerHTML = "";
 
 
     let totalAcumulado = 0;
@@ -287,7 +286,7 @@ function cargarVentas() {
             <p>${venta.fecha} - ${venta.nombre} - Cantidad: ${venta.cantidad} - Total: $${venta.total.toFixed(2)}</p>
         `;
         listaVentas.appendChild(ventaDiv);
-        totalAcumulado += venta.total; // Sumar al total acumulado
+        totalAcumulado += venta.total;
     });
 
 
@@ -295,7 +294,6 @@ function cargarVentas() {
 }
 
 
-// Llama a esta función donde lo necesites, por ejemplo, al cargar una página de estadísticas
 
 //esto es para darle funcionalidad al carrusel
 const imagenes = [
@@ -308,16 +306,16 @@ let indice = 0;
 
 function cambiarImagen() {
     const imagenCarrusel = document.getElementById("imagenCarrusel");
-    imagenCarrusel.style.opacity = 0; // Desvanece la imagen actual
+    imagenCarrusel.style.opacity = 0;
 
     setTimeout(() => {
-        indice = (indice + 1) % imagenes.length; // Cambia el índice
-        imagenCarrusel.src = imagenes[indice]; // Cambia la imagen
-        imagenCarrusel.style.opacity = 1; // Desvanece la nueva imagen
-    }, 1000); // Espera 1 segundo antes de cambiar la imagen
+        indice = (indice + 1) % imagenes.length;
+        imagenCarrusel.src = imagenes[indice];
+        imagenCarrusel.style.opacity = 1;
+    }, 1000);
 
 }
 
-// Cambiar la imagen cada 5 segundos
+
 setInterval(cambiarImagen, 5000);
 
