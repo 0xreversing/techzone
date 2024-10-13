@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Página de Inicio</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="carrito-link">
+                <a href="javascript:void(0);" id="icono-carrito">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Icono Carrito" class="carrito-icon">
+                    Carrito
+                </a>
+            </div>
+            <div class="logo">Techno-zone</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="#">Carrito</a></li>
+                </ul>
+                <input type="text" id="search" placeholder="Buscar...">
+            </nav>
+        </div>
+    </header>
+   
+    <main>
+        <div class="carrusel">
+            <img id="imagenCarrusel" src="https://www.pkc.com.pe/wp-content/uploads/2022/05/lineas-horizontales-o-verticales-en-la-pantalla-de-un-televisor-LG.jpg" alt="Imagen 1">
+        </div>
+        <section class="historia">
+            <h1>Bienvenidos a Nuestra Tienda</h1>
+            <p>Aquí encontrarás los mejores productos del mercado.</p>
+        </section>
+        <section class="categorias">
+            <h2>Categorías</h2>
+            <button class="scroll-left" onclick="scrollCategorias(-200)">◀</button>
+            <div class="lista-categorias" id="lista-categorias">
+                <div class="categoria">
+                    <img src="https://img.freepik.com/vector-premium/celular-moderno_490053-11.jpg" alt="Celulares" onclick="irAProductos('celular')">
+                    <h3>Celular</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://compusistemasperu.com/wp-content/uploads/2023/03/HPG8.jpg" alt="Laptops" onclick="irAProductos('laptop')">
+                    <h3>Laptop</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://tecstore.pe/media/catalog/category/TEC_Banner-Web_Categoria_ACCESORIOS.jpg" alt="Accesorios" onclick="irAProductos('accesorios')">
+                    <h3>Accesorios</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://d598hd2wips7r.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/1/f/1f3y2a_imagenprincipalsintexto_a.jpg" alt="Impresoras" onclick="irAProductos('impresora')">
+                    <h3>Impresora</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://p2-ofp.static.pub/fes/cms/2023/02/22/pkhjbh23c7sjfxf76k6e6usevy3ixi851221.png" alt="Tablets" onclick="irAProductos('tablet')">
+                    <h3>Tablet</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://pesonyb2c.vtexassets.com/arquivos/ids/203848/ILCE-6400L_1.jpg?v=636864189508570000" alt="Cámaras" onclick="irAProductos('camara')">
+                    <h3>Cámara</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/pe/un43t5202agxpe/gallery/pe-fhd-t5200-un43t5202agxpe-533665351?$650_519_PNG$" alt="Televisores" onclick="irAProductos('television')">
+                    <h3>Televisores</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://hiraoka.com.pe/media/mageplaza/blog/post/p/s/ps5-playstation-5.jpg" alt="Consolas" onclick="irAProductos('consola')">
+                    <h3>Consolas</h3>
+                </div>
+                <div class="categoria">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_913106-MPE70638826229_072023-O.webp" alt="SmartWatch" onclick="irAProductos('smartwatch')">
+                    <h3>Smartwatch</h3>
+                </div>
+            </div>
+            <button class="scroll-right" onclick="scrollCategorias(200)">▶</button>
+            <div id="carrito" class="carrito">
+                <span class="cerrar" onclick="mostrarCarrito()">✖</span>
+                <h2>Carrito de Compras</h2>
+                <div id="lista-carrito"></div>
+                <p id="total">Total: $0</p>
+                <button onclick="pagar()">Pagar</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="facebook-icon.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://wa.me/" target="_blank">
+                <img src="whatsapp-icon.png" alt="Whatsapp">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

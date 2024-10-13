@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registro de Ventas</title>
+</head>
+<body>
+    <header>
+        <li><a href="javascript:void(0);" id="icono-carrito">🛒 Carrito</a></li>
+        <div class="logo">Logo Empresa</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="ventas.html">Ventas</a></li>
+            </ul>
+            <input type="text" id="search" placeholder="Buscar...">
+        </nav>
+    </header>
+
+    <div id="ventas">
+        <h2>Registro de Ventas</h2>
+        <div id="lista-ventas"></div>
+        <p id="total-acumulado">Total Acumulado: $0</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const listaVentas = document.getElementById('lista-ventas');
+            const totalAcumulado = document.getElementById('total-acumulado');
+            
+            let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
+            let total = 0;
+
+            ventas.forEach(venta => {
+                const div = document.createElement('div');
+                let detalles = `Fecha: ${venta.fecha}<br>Productos:<br>`;
+                
+                venta.productos.forEach(producto => {
+                    detalles += `${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}<br>`;
+                    total += producto.precio * producto.cantidad; // Sumar al total
+                });
+
+                div.innerHTML = detalles;
+                listaVentas.appendChild(div);
+            });
+
+            totalAcumulado.innerText = `Total Acumulado: $${total.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>
