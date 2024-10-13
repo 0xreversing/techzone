@@ -251,7 +251,7 @@ function scrollCategorias(offset) {
         behavior: 'smooth'
     });
 }
-//ACUMULADORES PARA LAS VENTAS
+
 let ventas = [];
 function registrarVenta(nombre, precio, cantidad) {
     const totalVenta = precio * cantidad;
@@ -270,7 +270,7 @@ function registrarVenta(nombre, precio, cantidad) {
 function guardarVentas() {
     localStorage.setItem('ventas', JSON.stringify(ventas)); 
 }
-//ME MUESTRA LAS VENTAS
+
 function cargarVentas() {
     const ventasGuardadas = JSON.parse(localStorage.getItem('ventas')) || [];
     const listaVentas = document.getElementById('lista-ventas');
@@ -295,7 +295,6 @@ function cargarVentas() {
 
 
 
-//esto es para darle funcionalidad al carrusel
 const imagenes = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6-0Rzn44mLiOy75cZzKyUiUuMIpTC11iaMA&s",
     "https://blog.latam.playstation.com/tachyon/sites/3/2023/10/e08941a3d4b8ac23d60cbf6304e829e2e7a775b7.png?resize=1088%2C612&crop_strategy=smart",
