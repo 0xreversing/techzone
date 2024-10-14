@@ -1,4 +1,4 @@
-let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // Cargar carrito del localStorage
+let carrito = JSON.parse(localStorage.getItem('carrito')) || []; 
 
 
 function agregarAlCarrito(nombre, precio, imagen) {
@@ -9,15 +9,15 @@ function agregarAlCarrito(nombre, precio, imagen) {
     if (cantidad > 0) {
         const productoExistente = carrito.find(item => item.nombre === nombre);
         if (productoExistente) {
-            productoExistente.cantidad += cantidad;
+            productoExistente.cantidad += cantidad; 
             registrarVenta(nombre, precio, cantidad);
         } else {
-            carrito.push({ nombre, precio, cantidad, imagen });
+            carrito.push({ nombre, precio, cantidad, imagen }); 
         }
 
 
-        cantidadInput.value = "";
-        actualizarCarrito();
+        cantidadInput.value = ""; 
+        actualizarCarrito(); 
         guardarCarrito();
 
 
@@ -32,13 +32,13 @@ function agregarAlCarrito(nombre, precio, imagen) {
 
 function mostrarCarrito() {
     const carritoDiv = document.getElementById('carrito');
-    carritoDiv.classList.toggle('active');
+    carritoDiv.classList.toggle('active'); 
 }
 
 
 function actualizarCarrito() {
     const listaCarrito = document.getElementById('lista-carrito');
-    listaCarrito.innerHTML = "";
+    listaCarrito.innerHTML = ""; 
     let total = 0;
 
 
@@ -61,22 +61,20 @@ function actualizarCarrito() {
 
 
 function pagar() {
-    
     const venta = {
         fecha: new Date().toLocaleString(),
-        productos: [...carrito]
+        productos: [...carrito] 
     };
     
-
     let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
     ventas.push(venta);
     localStorage.setItem('ventas', JSON.stringify(ventas));
 
     alert("Proceso de pago iniciado.");
-    carrito = [];
+    carrito = []; 
     actualizarCarrito();
-    mostrarCarrito();
-    guardarCarrito();
+    mostrarCarrito(); 
+    guardarCarrito(); 
 }
 
 
@@ -85,17 +83,11 @@ function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito();
 });
 
-
-
 document.getElementById('icono-carrito').onclick = mostrarCarrito;
-
-
 
 const productos = {
     celular: [
@@ -148,37 +140,28 @@ function mostrarModal(nombre, precio, imagen, descripcion) {
     document.getElementById('modal-descripcion').innerText = descripcion;
 
 
-    document.getElementById('modal').style.display = 'block';
+    document.getElementById('modal').style.display = 'block'; // Mostrar el modal
 }
-
-
-
 
 function cerrarModal() {
-    document.getElementById('modal').style.display = 'none';
+    document.getElementById('modal').style.display = 'none'; // Ocultar el modal
 }
-
-
-
 
 function irAProductos(categoria) {
     const queryString = `?categoria=${categoria}`;
     window.location.href = 'productos.html' + queryString;
 }
 
-
 function irAProducto(nombre) {
     const queryString = `?nombre=${nombre}`;
     window.location.href = 'producto.html' + queryString;
 }
-
 
 function cargarProducto() {
     const urlParams = new URLSearchParams(window.location.search);
     const nombre = urlParams.get('nombre');
     const productosArray = Object.values(productos).flat();
     const producto = productosArray.find(p => p.nombre === nombre);
-
 
     if (producto) {
         const productoDiv = document.getElementById('producto-detalle');
@@ -192,12 +175,9 @@ function cargarProducto() {
     }
 }
 
-
-
 if (window.location.pathname.includes('producto.html')) {
     cargarProducto();
 }
-
 
 function cargarProductos() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -218,7 +198,6 @@ function cargarProductos() {
             productosDiv.appendChild(productoDiv);
         });
     } else {
-
         for (const [categoria, listaProductos] of Object.entries(productos)) {
             listaProductos.forEach(producto => {
                 const productoDiv = document.createElement('div');
@@ -235,24 +214,20 @@ function cargarProductos() {
     }
 }
 
-
-
-
 if (window.location.pathname.includes('productos.html')) {
     cargarProductos();
 }
-
 
 function scrollCategorias(offset) {
     const categorias = document.getElementById('lista-categorias');
     categorias.scrollBy({
         top: 0,
         left: offset,
-        behavior: 'smooth'
+        behavior: 'smooth' 
     });
 }
 
-let ventas = [];
+let ventas = []; 
 function registrarVenta(nombre, precio, cantidad) {
     const totalVenta = precio * cantidad;
     const venta = {
@@ -262,8 +237,8 @@ function registrarVenta(nombre, precio, cantidad) {
         total: totalVenta,
         fecha: new Date().toISOString(), 
     };
-    ventas.push(venta);
-    guardarVentas();
+    ventas.push(venta); 
+    guardarVentas(); 
 }
 
 
@@ -274,11 +249,8 @@ function guardarVentas() {
 function cargarVentas() {
     const ventasGuardadas = JSON.parse(localStorage.getItem('ventas')) || [];
     const listaVentas = document.getElementById('lista-ventas');
-    listaVentas.innerHTML = "";
-
-
+    listaVentas.innerHTML = ""; 
     let totalAcumulado = 0;
-
 
     ventasGuardadas.forEach(venta => {
         const ventaDiv = document.createElement('div');
@@ -286,14 +258,11 @@ function cargarVentas() {
             <p>${venta.fecha} - ${venta.nombre} - Cantidad: ${venta.cantidad} - Total: $${venta.total.toFixed(2)}</p>
         `;
         listaVentas.appendChild(ventaDiv);
-        totalAcumulado += venta.total;
+        totalAcumulado += venta.total; 
     });
-
 
     document.getElementById('total-acumulado').innerText = `Total Acumulado: $${totalAcumulado.toFixed(2)}`;
 }
-
-
 
 const imagenes = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6-0Rzn44mLiOy75cZzKyUiUuMIpTC11iaMA&s",
@@ -305,16 +274,14 @@ let indice = 0;
 
 function cambiarImagen() {
     const imagenCarrusel = document.getElementById("imagenCarrusel");
-    imagenCarrusel.style.opacity = 0;
+    imagenCarrusel.style.opacity = 0; 
 
     setTimeout(() => {
-        indice = (indice + 1) % imagenes.length;
-        imagenCarrusel.src = imagenes[indice];
-        imagenCarrusel.style.opacity = 1;
-    }, 1000);
+        indice = (indice + 1) % imagenes.length; 
+        imagenCarrusel.src = imagenes[indice]; 
+        imagenCarrusel.style.opacity = 1; 
+    }, 1000); 
 
 }
-
-
 setInterval(cambiarImagen, 5000);
 

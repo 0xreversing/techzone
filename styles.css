@@ -5,13 +5,11 @@ body {
     background: linear-gradient(180deg, #e3f2fd, #ffffff); 
 }
 
-
 .lista-categorias .categoria img {
     width: 150px; 
     height: 100px;
     object-fit: cover; 
 }
-
 
 .carrito {
     position: fixed;
@@ -28,11 +26,9 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-
 .carrito.active {
     display: flex;
 }
-
 
 .cerrar {
     position: absolute;
@@ -41,7 +37,6 @@ body {
     cursor: pointer;
     font-size: 24px;
 }
-
 
 header {
     display: flex;
@@ -58,6 +53,7 @@ header {
     font-weight: bold;
     color: #ffeb3b; 
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -76,18 +72,15 @@ nav ul li a:hover {
     background-color: #1e88e5;
 }
 
-
 .lista-categorias {
     display: flex;
     overflow-x: auto;
 }
 
-
 .categoria {
     margin: 10px;
     text-align: center;
 }
-
 
 .productos {
     display: flex;
@@ -95,30 +88,25 @@ nav ul li a:hover {
     gap: 20px;
 }
 
-
 .producto {
     border: 1px solid #ccc;
     padding: 10px;
     width: 200px;
     text-align: center;
 }
+
 .carrito {
     color: black; 
 }
-
 
 .carrito h2,
 .carrito p {
     color: black; 
 }
 
-
 .carrito div {
     color: black; 
 }
-
-
-
 
 .scroll-left,
 .scroll-right {
@@ -129,6 +117,7 @@ nav ul li a:hover {
     cursor: pointer;
     margin: 10px;
 }
+
 .categorias {
     background: #ffffff;
     padding: 20px;
@@ -148,6 +137,7 @@ nav ul li a:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
+
 .modal {
     display: none; 
     position: fixed; 
@@ -159,7 +149,6 @@ nav ul li a:hover {
     background-color: rgba(0, 0, 0, 0.5); 
 }
 
-
 .modal-content {
     margin: 5% auto; 
     padding: 15px;
@@ -170,7 +159,6 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
-
 .cerrar {
     position: absolute;
     top: 10px;
@@ -178,7 +166,6 @@ nav ul li a:hover {
     font-size: 20px;
     cursor: pointer;
 }
-
 
 .modal-content img {
     width: 100%;
@@ -218,7 +205,8 @@ nav ul li a:hover {
     margin-top: 20px;
     color: #333;
 }
-esto es para el carrusel
+
+
 .carrusel {
     display: flex; 
     justify-content: center; 
@@ -233,18 +221,19 @@ esto es para el carrusel
 }
 
 .carrusel img {
-    width: 400px; /* Ancho fijo para todas las imágenes */
-    height: 300px; /* Altura fija para todas las imágenes */
-    object-fit: cover; /* Ajustar la imagen para que llene el espacio sin deformarse */
+    width: 400px;
+    height: 300px; 
+    object-fit: cover; 
     border-radius: 10px;
     transition: transform 0.5s ease;
 }
-esto es para lo de bienvenidos a nuestra tienda
+
+
 main {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente todos los elementos dentro de main */
-    padding: 20px; /* Espacio alrededor del contenido */
+    align-items: center;
+    padding: 20px;
 }
 
 .historia {
@@ -276,7 +265,7 @@ main {
     line-height: 1.8;
     font-family: 'Arial', sans-serif;
 }
-ESTO ES PARA EL PIE-SUELO
+
 /* Estilos para el footer */
 html, body {
     height: 100%;
@@ -354,4 +343,56 @@ footer {
 
 .carrito-link a:hover .carrito-icon {
     transform: scale(1.2); 
+}
+
+
+@media (max-width: 768px) {
+    .carrusel img {
+        width: 100%;
+    }
+
+    .lista-categorias .categoria img {
+        width: 120px; 
+        height: auto;
+    }
+
+    nav ul {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0; 
+    }
+
+    .historia {
+        padding: 20px; 
+    }
+
+    .historia h1 {
+        font-size: 2em; 
+    }
+
+    .historia p {
+        font-size: 1em;
+    }
+
+    .carrito {
+        padding: 10px; 
+    }
+
+    .carrito h2,
+    .carrito p {
+        font-size: 1em; 
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2em; 
+    }
+
+    .scroll-left, .scroll-right {
+        padding: 5px; 
+    }
 }
